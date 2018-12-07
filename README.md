@@ -18,7 +18,7 @@ const thumbor = new Thumbor('my_key', https://mysite.com/thumbs)
 # generate your url
 
  const thumborize = thumbor
-   .filter(format(webp)')
+   .filter('format(webp)')
    .setImagePath('https://myimageurl.com/img.jpg')
    .resize(200, 300)
    .buildUrl()
