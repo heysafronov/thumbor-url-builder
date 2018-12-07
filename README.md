@@ -4,7 +4,7 @@ Thumbor client for JavaScript.
 ## Install
 
 ```
-# install
+// install
 
 npm i thumbor-js-url-builder
 ```
@@ -12,7 +12,7 @@ npm i thumbor-js-url-builder
 ## Declare in JS
 
 ```js
-# declare in JS
+// declare in JS
 
 import Thumbor from 'thumbor'
 const thumbor = new Thumbor('my_key', https://mysite.com/thumbs)
@@ -21,7 +21,7 @@ const thumbor = new Thumbor('my_key', https://mysite.com/thumbs)
 ## Generate your URL
 
 ```js
-# generate your url
+// generate your url
 
  const thumborize = thumbor
    .filter('format(webp)')
