@@ -1,5 +1,4 @@
 const crypto = require('crypto')
-
 /**
  * @param {[type]} securityKey
  * @param {[type]} thumborServerUrl
@@ -9,7 +8,6 @@ function Thumbor(securityKey, thumborServerUrl) {
 
   this.THUMBOR_SECURITY_KEY = securityKey
   this.THUMBOR_URL_SERVER = thumborServerUrl
-
   this.imagePath = ''
   this.width = 0
   this.height = 0
@@ -28,7 +26,6 @@ Thumbor.prototype = {
   TOP: 'top',
   MIDDLE: 'middle',
   BOTTOM: 'bottom',
-
   RIGHT: 'right',
   CENTER: 'center',
   LEFT: 'left',
