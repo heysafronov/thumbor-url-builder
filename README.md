@@ -12,7 +12,7 @@ npm i thumbor-js-url-builder
 ```js
 // declare in JS
 
-import Thumbor from 'thumbor'
+import Thumbor from 'thumbor-js-url-builder'
 const thumbor = new Thumbor('my_key', 'https://my-site.com/thumbs')
 ```
 
@@ -38,7 +38,7 @@ thumborUrl="https://my-site.com/thumbs"
 
 // thumborize.js 
 
-import Thumbor from 'thumbor'
+import Thumbor from 'thumbor-js-url-builder'
 const thumbor = new Thumbor(process.env.thumborKey, process.env.thumborUrl)
 
 const thumborize = (type = 'jpeg', url, num = 1, width = 600, height = 400) => {
