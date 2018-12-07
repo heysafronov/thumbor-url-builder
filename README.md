@@ -3,13 +3,13 @@ Thumbor client for JavaScript.
 
 ## Usage
 
-```$xslt
+```js
 # install
 
 npm i thumbor-js-url-builder
 ```
 
-```
+```js
 # declare thumbor-js-url-builder in JS
 
 import Thumbor from 'thumbor'
