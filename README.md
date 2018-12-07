@@ -33,8 +33,8 @@ const thumbor = new Thumbor('my_key', 'https://my-site.com/thumbs')
 ```js
 // .env
 
-ThumborKey="gr4mf3t3gsg4g3g3d3d"
-ThumborUrl="https://my-site.com/thumbs"
+thumborKey="gr4mf3t3gsg4g3g3d3d"
+thumborUrl="https://my-site.com/thumbs"
 
 // thumborize.js 
 
