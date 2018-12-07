@@ -13,7 +13,7 @@ npm i thumbor-js-url-builder
 // declare in JS
 
 import Thumbor from 'thumbor'
-const thumbor = new Thumbor('my_key', 'https://mysite.com/thumbs')
+const thumbor = new Thumbor('my_key', 'https://my-site.com/thumbs')
 ```
 
 ## Generate your URL
@@ -23,7 +23,7 @@ const thumbor = new Thumbor('my_key', 'https://mysite.com/thumbs')
 
  const thumborize = thumbor
    .filter('format(webp)')
-   .setImagePath('https://myimageurl.com/img.jpg')
+   .setImagePath('https://my-image-url.com/img.jpg')
    .resize(200, 300)
    .buildUrl()
 ```
