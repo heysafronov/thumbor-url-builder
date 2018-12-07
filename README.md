@@ -50,7 +50,4 @@ const thumborize = (type = 'jpeg', url, num = 1, width = 600, height = 400) => {
 }
 
 export default thumborize
-
-
-
 ```
