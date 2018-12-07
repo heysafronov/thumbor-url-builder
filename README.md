@@ -27,3 +27,5 @@ const thumbor = new Thumbor('my_key', 'https://my-site.com/thumbs')
    .resize(200, 300)
    .buildUrl()
 ```
+
+## `Example`
