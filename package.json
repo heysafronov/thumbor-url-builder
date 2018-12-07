@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/heysafronov/thumbor-url-builder/issues"
   },
-  "homepage": "https://github.com/heysafronov/thumbor-url-builder#readme",
-  "dependencies": {
-    "prettier": "^1.15.3"
-  }
+  "homepage": "https://github.com/heysafronov/thumbor-url-builder#readme"
 }
