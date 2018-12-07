@@ -28,4 +28,29 @@ const thumbor = new Thumbor('my_key', 'https://my-site.com/thumbs')
    .buildUrl()
 ```
 
-## `**Example**`
+## `Example`
+
+```js
+// .env
+
+ThumborKey="gr4mf3t3gsg4g3g3d3d"
+ThumborUrl="https://my-site.com/thumbs"
+
+// thumborize.js 
+
+import Thumbor from 'thumbor'
+const thumbor = new Thumbor(process.env.thumborKey, process.env.thumborUrl)
+
+const thumborize = (type = 'jpeg', url, num = 1, width = 600, height = 400) => {
+  return thumbor
+    .filter(`format(${type})`)
+    .setImagePath(url)
+    .resize(width * num, height * num)
+    .buildUrl()
+}
+
+export default thumborize
+
+
+
+```
