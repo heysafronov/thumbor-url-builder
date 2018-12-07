@@ -24,7 +24,7 @@ const thumbor = new Thumbor('my_key', 'https://my-site.com/thumbs')
  const thumborize = thumbor
    .filter('format(webp)')
    .setImagePath('https://my-image-url.com/img.jpg')
-   .resize(200, 300)
+   .resize(600, 400)
    .buildUrl()
 ```
 
