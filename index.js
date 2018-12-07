@@ -1,16 +1,16 @@
-var crypto = require('crypto');
+const crypto = require("crypto");
 
 /**
  * @param {[type]} securityKey
  * @param {[type]} thumborServerUrl
  */
 function Thumbor(securityKey, thumborServerUrl) {
-  'use strict';
+  "use strict";
 
   this.THUMBOR_SECURITY_KEY = securityKey;
   this.THUMBOR_URL_SERVER = thumborServerUrl;
 
-  this.imagePath = '';
+  this.imagePath = "";
   this.width = 0;
   this.height = 0;
   this.smart = false;
@@ -21,26 +21,27 @@ function Thumbor(securityKey, thumborServerUrl) {
   this.valignValue = null;
   this.cropValues = null;
   this.meta = false;
-  this.filtersCalls = '';
+  this.filtersCalls = "";
 }
 
 Thumbor.prototype = {
+  TOP: "top",
+  MIDDLE: "middle",
+  BOTTOM: "bottom",
 
-  TOP: 'top',
-  MIDDLE: 'middle',
-  BOTTOM: 'bottom',
-
-  RIGHT: 'right',
-  CENTER: 'center',
-  LEFT: 'left',
+  RIGHT: "right",
+  CENTER: "center",
+  LEFT: "left",
 
   /**
    * Set path of image
    * @param {String} imagePath [description]
    */
   setImagePath: function(imagePath) {
-    this.imagePath = (imagePath.charAt(0) === '/') ?
-      imagePath.substring(1, imagePath.length) : imagePath;
+    this.imagePath =
+      imagePath.charAt(0) === "/"
+        ? imagePath.substring(1, imagePath.length)
+        : imagePath;
     return this;
   },
   /**
@@ -48,13 +49,13 @@ Thumbor.prototype = {
    * @return {String}
    */
   getOperationPath: function() {
-    var parts = this.urlParts();
+    let parts = this.urlParts();
 
     if (0 === parts.length) {
-      return '';
+      return "";
     }
 
-    return parts.join('/') + '/';
+    return parts.join("/") + "/";
   },
   /**
    * Build operation array
@@ -66,28 +67,30 @@ Thumbor.prototype = {
    */
   urlParts: function() {
     if (!this.imagePath) {
-      throw new Error('The image url can\'t be null or empty.');
+      throw new Error("The image url can't be null or empty.");
     }
 
-    var parts = [];
+    let parts = [];
 
     if (this.meta) {
-      parts.push('meta');
+      parts.push("meta");
     }
 
     if (this.cropValues) {
       parts.push(
         this.cropValues.left +
-        'x' + this.cropValues.top +
-        ':' + this.cropValues.right +
-        'x' + this.cropValues.bottom
+          "x" +
+          this.cropValues.top +
+          ":" +
+          this.cropValues.right +
+          "x" +
+          this.cropValues.bottom
       );
     }
 
     if (this.fitInFlag) {
-      parts.push('fit-in');
+      parts.push("fit-in");
     }
-
 
     if (
       this.width ||
@@ -95,17 +98,17 @@ Thumbor.prototype = {
       this.withFlipHorizontally ||
       this.withFlipVertically
     ) {
-      var sizeString = '';
+      let sizeString = "";
 
       if (this.withFlipHorizontally) {
-        sizeString += '-';
+        sizeString += "-";
       }
       sizeString += this.width;
 
-      sizeString += 'x';
+      sizeString += "x";
 
       if (this.withFlipVertically) {
-        sizeString += '-';
+        sizeString += "-";
       }
       sizeString += this.height;
 
@@ -121,11 +124,11 @@ Thumbor.prototype = {
     }
 
     if (this.smart) {
-      parts.push('smart');
+      parts.push("smart");
     }
 
     if (this.filtersCalls.length) {
-      parts.push('filters:' + this.filtersCalls);
+      parts.push("filters:" + this.filtersCalls);
     }
 
     return parts;
@@ -192,7 +195,7 @@ Thumbor.prototype = {
     ) {
       this.halignValue = halign;
     } else {
-      throw new Error('Horizontal align must be left, right or center.');
+      throw new Error("Horizontal align must be left, right or center.");
     }
     return this;
   },
@@ -208,7 +211,7 @@ Thumbor.prototype = {
     ) {
       this.valignValue = valign;
     } else {
-      throw new Error('Vertical align must be top, bottom or middle.');
+      throw new Error("Vertical align must be top, bottom or middle.");
     }
     return this;
   },
@@ -252,24 +255,21 @@ Thumbor.prototype = {
    * @return {String}
    */
   buildUrl: function() {
-    var operation = this.getOperationPath();
+    let operation = this.getOperationPath();
 
     if (this.THUMBOR_SECURITY_KEY) {
-
       var key = crypto
-        .createHmac('sha1', this.THUMBOR_SECURITY_KEY)
+        .createHmac("sha1", this.THUMBOR_SECURITY_KEY)
         .update(operation + this.imagePath)
-        .digest('base64');
+        .digest("base64");
 
-      key = key.replace(/\+/g, '-').replace(/\//g, '_');
+      key = key.replace(/\+/g, "-").replace(/\//g, "_");
 
-      return this.THUMBOR_URL_SERVER +
-        '/' + key +
-        '/' + operation +
-        this.imagePath;
-
+      return (
+        this.THUMBOR_URL_SERVER + "/" + key + "/" + operation + this.imagePath
+      );
     } else {
-      return this.THUMBOR_URL_SERVER + '/unsafe/' + operation + this.imagePath;
+      return this.THUMBOR_URL_SERVER + "/unsafe/" + operation + this.imagePath;
     }
   }
 };
