@@ -4,8 +4,6 @@ Thumbor client for JavaScript.
 ## Install
 
 ```
-// install
-
 npm i thumbor-js-url-builder
 ```
 
