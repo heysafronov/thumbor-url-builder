@@ -3,7 +3,7 @@ Thumbor client for JavaScript.
 
 ## Install
 
-```js
+```
 # install
 
 npm i thumbor-js-url-builder
@@ -12,7 +12,7 @@ npm i thumbor-js-url-builder
 ## Declare in JS
 
 ```js
-# declare thumbor-js-url-builder in JS
+# declare in JS
 
 import Thumbor from 'thumbor'
 const thumbor = new Thumbor('my_key', https://mysite.com/thumbs)
