@@ -28,4 +28,4 @@ const thumbor = new Thumbor('my_key', 'https://my-site.com/thumbs')
    .buildUrl()
 ```
 
-## `Example`
+## `**Example**`
