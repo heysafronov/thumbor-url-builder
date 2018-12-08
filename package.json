@@ -1,6 +1,6 @@
 {
   "name": "thumbor-js-url-builder",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Thumbor client for JS",
   "main": "index.js",
   "scripts": {
