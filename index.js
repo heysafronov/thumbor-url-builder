@@ -1,11 +1,11 @@
 const crypto = require('crypto')
+
 /**
  * @param {[type]} securityKey
  * @param {[type]} thumborServerUrl
  */
 function Thumbor(securityKey, thumborServerUrl) {
   'use strict'
-
   this.THUMBOR_SECURITY_KEY = securityKey
   this.THUMBOR_URL_SERVER = thumborServerUrl
   this.imagePath = ''
@@ -41,38 +41,31 @@ Thumbor.prototype = {
         : imagePath
     return this
   },
+
   /**
    * Converts operation array to string
    * @return {String}
    */
   getOperationPath: function() {
     let parts = this.urlParts()
-
     if (0 === parts.length) {
       return ''
     }
-
     return parts.join('/') + '/'
   },
+
   /**
    * Build operation array
-   *
-   * @TODO Should be refactored so that strings are generated in the
-   * commands as opposed to in 1 massive function
-   *
    * @return {Array}
    */
   urlParts: function() {
     if (!this.imagePath) {
       throw new Error("The image url can't be null or empty.")
     }
-
     let parts = []
-
     if (this.meta) {
       parts.push('meta')
     }
-
     if (this.cropValues) {
       parts.push(
         this.cropValues.left +
@@ -84,11 +77,9 @@ Thumbor.prototype = {
           this.cropValues.bottom
       )
     }
-
     if (this.fitInFlag) {
       parts.push('fit-in')
     }
-
     if (
       this.width ||
       this.height ||
@@ -96,40 +87,32 @@ Thumbor.prototype = {
       this.withFlipVertically
     ) {
       let sizeString = ''
-
       if (this.withFlipHorizontally) {
         sizeString += '-'
       }
       sizeString += this.width
-
       sizeString += 'x'
-
       if (this.withFlipVertically) {
         sizeString += '-'
       }
       sizeString += this.height
-
       parts.push(sizeString)
     }
-
     if (this.halignValue) {
       parts.push(this.halignValue)
     }
-
     if (this.valignValue) {
       parts.push(this.valignValue)
     }
-
     if (this.smart) {
       parts.push('smart')
     }
-
     if (this.filtersCalls.length) {
       parts.push('filters:' + this.filtersCalls)
     }
-
     return parts
   },
+
   /**
    * Resize the image to the specified dimensions. Overrides any previous call
    * to `fitIn` or `resize`.
@@ -153,6 +136,7 @@ Thumbor.prototype = {
     this.smart = smartCrop
     return this
   },
+
   /**
    * Resize the image to fit in a box of the specified dimensions. Overrides
    * any previous call to `fitIn` or `resize`.
@@ -166,6 +150,7 @@ Thumbor.prototype = {
     this.fitInFlag = true
     return this
   },
+
   /**
    * Flip image horizontally
    */
@@ -173,6 +158,7 @@ Thumbor.prototype = {
     this.withFlipHorizontally = true
     return this
   },
+
   /**
    * Flip image vertically
    */
@@ -180,6 +166,7 @@ Thumbor.prototype = {
     this.withFlipVertically = true
     return this
   },
+
   /**
    * Specify horizontal alignment used if width is altered due to cropping
    * @param  {String} halign 'left', 'center', 'right'
@@ -196,6 +183,7 @@ Thumbor.prototype = {
     }
     return this
   },
+
   /**
    * Specify vertical alignment used if height is altered due to cropping
    * @param  {String} valign 'top', 'middle', 'bottom'
@@ -212,6 +200,7 @@ Thumbor.prototype = {
     }
     return this
   },
+
   /**
    * Specify that JSON metadata should be returned instead of the thumbnailed
    * image.
@@ -221,6 +210,7 @@ Thumbor.prototype = {
     this.meta = metaDataOnly
     return this
   },
+
   /**
    * Append a filter, e.g. quality(80)
    * @param  {String} filterCall
@@ -229,6 +219,7 @@ Thumbor.prototype = {
     this.filtersCalls = filterCall
     return this
   },
+
   /**
    * Manually specify crop window.
    * @param  {Integer} left
@@ -244,24 +235,21 @@ Thumbor.prototype = {
       right: right,
       bottom: bottom
     }
-
     return this
   },
+
   /**
    * Combine image url and operations with secure and unsecure (unsafe) paths
    * @return {String}
    */
   buildUrl: function() {
     let operation = this.getOperationPath()
-
     if (this.THUMBOR_SECURITY_KEY) {
       var key = crypto
         .createHmac('sha1', this.THUMBOR_SECURITY_KEY)
         .update(operation + this.imagePath)
         .digest('base64')
-
       key = key.replace(/\+/g, '-').replace(/\//g, '_')
-
       return (
         this.THUMBOR_URL_SERVER + '/' + key + '/' + operation + this.imagePath
       )
