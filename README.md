@@ -1,34 +1,27 @@
 # Thumbor URL builder
-Thumbor client for JavaScript.
+[Thumbor](https://github.com/thumbor/thumbor) client for JavaScript.
 
-## Install
-
+### Installation
 ```
 npm i thumbor-js-url-builder
 ```
 
-## Declare in JS
-
+### Declare in JS
 ```js
-// declare in JS
-
 import Thumbor from 'thumbor-js-url-builder'
 const thumbor = new Thumbor('my_key', 'https://my-site.com/thumbs')
 ```
 
-## Generate your URL
-
+### Generate your URL
 ```js
-// generate your url
-
- const thumborize = thumbor
-   .filter('format(webp)')
-   .setImagePath('https://my-image-url.com/img.jpg')
-   .resize(600, 400)
-   .buildUrl()
+const thumborize = thumbor
+  .filter('format(webp)')
+  .setImagePath('https://my-site.com/image.jpeg')
+  .resize(600, 400)
+  .buildUrl()
 ```
 
-## `Example`
+### [Example](https://www.npmjs.com/package/thumbor-js-url-builder)
 
 ```js
 // .env
