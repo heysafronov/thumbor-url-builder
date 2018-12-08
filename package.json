@@ -10,6 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/heysafronov/thumbor-url-builder.git"
   },
+  "keywords": [
+    "thumbor",
+    "thumbor-js",
+    "thumbor-img",
+    "thumbor-url",
+    "thumbor-builder",
+    "thumbor-client"
+  ],
   "author": "Egor Safronov",
   "license": "MIT",
   "bugs": {
