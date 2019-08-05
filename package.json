@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/heysafronov/thumbor-url-builder/issues"
   },
-  "homepage": "https://github.com/heysafronov/thumbor-url-builder#readme"
+  "homepage": "https://github.com/heysafronov/thumbor-url-builder#readme",
+  "dependencies": {
+    "create-hmac": "^1.1.7"
+  }
 }
