@@ -20,6 +20,9 @@
   ],
   "author": "Egor Safronov",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "bugs": {
     "url": "https://github.com/heysafronov/thumbor-url-builder/issues"
   },
