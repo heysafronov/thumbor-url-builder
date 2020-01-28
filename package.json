@@ -1,5 +1,5 @@
 {
-  "name": "thumbor-js-url-builder",
+  "name": "@heysafronov/thumbor-js-url-builder",
   "version": "2.2.0",
   "description": "Thumbor client for JS",
   "main": "index.js",
