@@ -19,6 +19,8 @@ function Thumbor(securityKey, thumborServerUrl) {
   this.valignValue = null
   this.cropValues = null
   this.meta = false
+  this.trim = false
+  this.trimOrientation = '';
   this.filtersCalls = ''
 }
 
@@ -107,6 +109,13 @@ Thumbor.prototype = {
     if (this.smart) {
       parts.push('smart')
     }
+    if (this.trim) {
+      let trimPart = 'trim';
+      if (this.trimOrientation) {
+        trimPart += ':' + this.trimOrientation
+      }
+      parts.push(trimPart)
+    }
     if (this.filtersCalls.length) {
       parts.push('filters:' + this.filtersCalls)
     }
@@ -166,6 +175,18 @@ Thumbor.prototype = {
     this.withFlipVertically = true
     return this
   },
+
+  /**
+   * Removes surrounding space in images using top-left pixel color unless specified otherwise;
+   * @param {String} orientation 'top-left', 'bottom-right'
+   */
+  trim: function(orientation) {
+    this.trim = true
+    this.trimOrientation = orientation;
+    return this
+  },
+
+  trimTopLeft: function
 
   /**
    * Specify horizontal alignment used if width is altered due to cropping
